@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser">
+
+  <browser:resource name="sharebox-20100721.js"
+    file="browser/javascript/sharebox.js" 
+    permission="zope2.Public" />
+
+  <browser:resourceDirectory name="sharebox"
+    directory="browser/images/" 
+    permission="zope2.Public" />
+
+</configure>

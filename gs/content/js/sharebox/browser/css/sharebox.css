@@ -1,0 +1,69 @@
+/* Sharebox Stylesheet
+ *
+ * Controls the look and to some extent feel of the sharebox.
+ *
+ */
+
+/* Share bar */
+
+.share-bar {
+    min-width: 100px;
+    width: 100px;
+    display: -moz-inline-stack;
+    display: inline-block;
+}
+
+.email-link {
+     background-image:url("/++resource++sharebar/world_link.png");
+     min-width: 16px;
+     min-height: 16px;
+     width: 16px;
+     height: 16px;
+     display: -moz-inline-stack;
+     display: inline-block;
+     text-decoration: none;
+     border: none;
+     cursor: pointer;
+}
+
+.fb-link {
+     background-image:url("/++resource++sharebar/facebook.png");
+     min-width: 16px;
+     min-height: 16px;
+     width: 16px;
+     height: 16px;
+     display: -moz-inline-stack;
+     display: inline-block;
+     text-decoration: none;
+     border: none;
+}
+
+.full-link {
+     background-color: blue;
+     zindex: 10;
+     background: lightgrey;
+     margin: 0.35em;
+     padding: 0.35em;
+     width:auto; 
+     display:none;
+     border: thin #41638B solid;
+     position: absolute;
+     float:left;
+}
+
+.full-link-box {
+     margin: 0.69em;
+     padding: 0.69em;
+}
+
+.full-link-box-help {
+     margin: 0;
+     padding: 0;
+}
+
+.full-link-input {
+     margin: 0;
+     padding: 0.17em;
+     width: 95%;
+}
+
