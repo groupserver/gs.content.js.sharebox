@@ -3,7 +3,7 @@ import os
 
 from version import get_version
 
-setup(name='gs.image',
+setup(name='gs.content.js.sharebox',
       version=get_version(),
       description="Image manipulation and display on GroupServer",
       long_description=open("README.txt").read() + "\n" +

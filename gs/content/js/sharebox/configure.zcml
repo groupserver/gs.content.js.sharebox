@@ -6,8 +6,13 @@
     file="browser/javascript/sharebox.js" 
     permission="zope2.Public" />
 
+  <browser:resource name="sharebox-20100721.css"
+    file="browser/css/sharebox.css" 
+    permission="zope2.Public" />
+
   <browser:resourceDirectory name="sharebox"
     directory="browser/images/" 
     permission="zope2.Public" />
+
 
 </configure>
