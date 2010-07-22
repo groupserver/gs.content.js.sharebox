@@ -7,18 +7,17 @@
 /* Share bar */
 
 .share-bar {
-    min-width: 100px;
-    width: 100px;
     display: -moz-inline-stack;
     display: inline-block;
 }
 
-.email-link {
-     background-image:url("/++resource++sharebar/world_link.png");
+.email-share {
+     background-image:url("/++resource++sharebox/world_link.png");
      min-width: 16px;
      min-height: 16px;
      width: 16px;
      height: 16px;
+     margin: 0 2px 0 2px;
      display: -moz-inline-stack;
      display: inline-block;
      text-decoration: none;
@@ -26,19 +25,50 @@
      cursor: pointer;
 }
 
-.fb-link {
-     background-image:url("/++resource++sharebar/facebook.png");
+.fb-share {
+     background-image:url("/++resource++sharebox/facebook.png");
      min-width: 16px;
      min-height: 16px;
      width: 16px;
      height: 16px;
+     margin: 0 2px 0 2px;
      display: -moz-inline-stack;
      display: inline-block;
      text-decoration: none;
      border: none;
+     cursor: pointer;
 }
 
-.full-link {
+.twitter-share {
+     background-image:url("/++resource++sharebox/twitter.png");
+     min-width: 16px;
+     min-height: 16px;
+     width: 16px;
+     height: 16px;
+     margin: 0 2px 0 2px;
+     display: -moz-inline-stack;
+     display: inline-block;
+     text-decoration: none;
+     border: none;
+     cursor: pointer;
+}
+
+
+.digg-share {
+     background-image:url("/++resource++sharebox/digg.png");
+     min-width: 16px;
+     min-height: 16px;
+     width: 16px;
+     height: 16px;
+     margin: 0 2px 0 2px;
+     display: -moz-inline-stack;
+     display: inline-block;
+     text-decoration: none;
+     border: none;
+     cursor: pointer;
+}
+
+.full-share {
      background-color: blue;
      zindex: 10;
      background: lightgrey;
@@ -51,12 +81,12 @@
      float:left;
 }
 
-.full-link-box {
+.full-share-box {
      margin: 0.69em;
      padding: 0.69em;
 }
 
-.full-link-box-help {
+.full-share-box-help {
      margin: 0;
      padding: 0;
 }
