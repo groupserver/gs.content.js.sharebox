@@ -5,15 +5,15 @@ fb_widget = '<a class="fb-share" title="Share on Facebook" \
                onclick="javascript:fb_popup(\'http://www.facebook.com/sharer.php?u={HREF}&t={TITLE}\')">&#160;</a>'
 
 twitter_widget = '<a class="twitter-share" title="Share on Twitter" \
-               onclick="javascript:fb_popup(\'http://www.twitter.com/home?status=Check+out+this+link:+{HREF}\')">&#160;</a>'
+               onclick="javascript:fb_popup(\'http://www.twitter.com/home?status={TITLE}:+{HREF}\')">&#160;</a>'
 
 digg_widget = '<a class="digg-share" title="Share on Digg" \
                onclick="javascript:fb_popup(\'http://digg.com/submit?url={HREF}&title={TITLE}\')">&#160;</a>'
 
-email_widget = '<span class="email-share" title="A short link to this post">&#160;</span> \
+email_widget = '<span class="email-share" title="Emailable link">&#160;</span> \
                </span> \
                <div class="full-share"> \
-                 <p class="full-share-box-help">You may copy and paste the link below into an email to link to this post:</p> \
+                 <p class="full-share-box-help">Link to this by copy/pasting the URL below into an email:</p> \
                  <input class="full-share-input" type="text" value="{HREF}" readonly="0"/> \
                </div>';
 
@@ -44,6 +44,7 @@ jQuery(document).ready(function(){
             allowablewidgets = allowablewidgets + generalWidgets[pos];
         }
         
+        title = title.replace(/ /g, '+')
         localwidget = localwidget.replace(/{WIDGETS}/g, allowablewidgets);
         localwidget = localwidget.replace(/{HREF}/g, href);
         localwidget = localwidget.replace(/{TITLE}/g, title);
@@ -63,7 +64,7 @@ jQuery(document).ready(function(){
 });
 
 function fb_popup(url){
-    newwindow = window.open(url, 'name', 'height=200,width=550');
+    newwindow = window.open(url, 'name', 'height=400,width=650');
     if (window.focus) {
         newwindow.focus()
     }
