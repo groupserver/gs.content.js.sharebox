@@ -14,5 +14,13 @@
     directory="browser/images/" 
     permission="zope2.Public" />
 
-
+  <!--Help-->
+  <browser:viewlet name="gs-content-js-sharebox"
+    manager="gs.help.interfaces.IUserHelp"
+    template="browser/templates/help.pt"
+    permission="zope.Public"
+    weight="14" />
+  <!--This weight of 14 puts the Share Box help after the help for the
+    - Image page -->
+  
 </configure>

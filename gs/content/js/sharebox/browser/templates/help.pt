@@ -1,0 +1,90 @@
+<tal:block>
+<div class="section" id="gs-content-js-sharebox">
+  <h2>Sharing</h2>
+  <p>
+    You can share 
+    <a href="#gs-group-messages-topics">topics,</a>
+    <a href="#gs-group-messages-topics">posts,</a> and
+    <a href="#gs-group-messages-topics">images</a>
+    with others.
+    If something can be shared it will have a
+    <strong>share box</strong>.
+    The share box looks different depending if the goup is
+    <a href="#gs-content-js-sharebox-public">public</a>,
+    <a href="#gs-content-js-sharebox-private">private or secret</a>.
+  </p>
+  <div class="section" id="gs-content-js-sharebox-public">
+    <h3>Public Groups</h3>
+    <p>
+      In a <strong>public group</strong> the share box will have four 
+      icons:
+    </p>   
+    <div class="share-bar"
+      tal:attributes="href view/request/URL"
+      href="#"
+      public="1" title="Sharing in GroupServer">&#160;</div>
+    <p>
+      The first three icons allow you to share an item using
+      <a href="#gs-content-js-sharebox-public-social">social 
+      networking</a>.
+      The last icon is used to share a link to the item using
+      <a href="#gs-content-js-sharebox-public-email">email</a>.
+    </p>   
+    <div class="section" id="gs-content-js-sharebox-public-social">
+      <h4>Sharing using Social Networking</h4>
+      <p>
+        You can share an item using the Facebook, Twitter, or Digg
+        social networking systems.
+        To share an item
+      </p>
+      <ol>
+        <li>Click on the icon represnting the service you want to use.
+          A dialog window will appear.</li>
+        <li>Login if the dialog contains a Login page.</li>
+        <li>Follow the instructions in the dialog.
+          They will differ from service to service.</li>
+      </ol>
+      <p>
+        <strong>Note</strong> you will need an account to share
+        and item using a social networking system.
+      </p>
+    </div>
+    <div class="section" id="gs-content-js-sharebox-public-email">
+      <h4>Sharing using Email</h4>
+      <p>
+        If you want to share an item using <strong>email</strong> carry
+        out the following steps.
+      </p>   
+      <ol>
+        <li>Click on the World icon.
+          A link will appear under the Share box.</li>
+        <li>Select the link.</li>
+        <li>Copy the link.</li>
+        <li>Paste it into a message.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="section" id="gs-content-js-sharebox-private">
+    <h3>Private or Secret Groups</h3>
+    <p>
+      In a <strong>private</strong> or <strong>secret</strong> group
+      only one icon will be present in the share box:
+    </p>   
+    <div class="share-bar"
+      tal:attributes="href view/request/URL"
+      href="#"
+      public="0" title="Sharing in GroupServer">&#160;</div>
+    <p>
+      This is because only group members can see posts, topics, and
+      images in a private or secret group.
+      Therefore the only people you can share links with are other
+      group members, by posting the link to them using email.
+      To share an item using <strong>email</strong> carry out the 
+      same steps as when 
+      <a href="#gs-content-js-sharebox-public-email">sharing an item 
+        from a public group using email.</a>
+  </div>
+</div>
+<script type="text/javascript" src="/++resource++jquery-1.4.4.min.js">&#160;</script>
+<script type="text/javascript" src="/++resource++sharebox-20100721.js">&#160;</script>
+</tal:block>
