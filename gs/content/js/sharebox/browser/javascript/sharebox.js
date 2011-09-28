@@ -17,8 +17,10 @@ email_widget = '<span class="email-share" title="Emailable link">&#160;</span> \
                  <input class="full-share-input" type="text" value="{HREF}" readonly="0"/> \
                </div>';
 
+//  TODO: Alllow the calling code to say what is being shared. For 
+//        example "Share post", "Share topic", or "Share image".
 share_widget = '<span class="share-widgets"> \
-                 <strong>Share post:</strong> \
+                 <strong>Share:</strong> \
                  {WIDGETS}'
 
 publicWidgets = [fb_widget, twitter_widget, digg_widget];
