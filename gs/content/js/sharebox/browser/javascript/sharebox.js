@@ -18,7 +18,7 @@ email_widget = '<span class="email-share" title="Emailable link">&#160;</span> \
                </div>';
 
 share_widget = '<span class="share-widgets"> \
-                 <strong>Share:</strong> \
+                 <strong>Share post:</strong> \
                  {WIDGETS}'
 
 publicWidgets = [fb_widget, twitter_widget, digg_widget];
