@@ -24,7 +24,8 @@ setup(name='gs.content.js.sharebox',
       zip_safe=True,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
+          'gs.content.js.jquery',
+          'gs.help',
       ],
       entry_points="""
       # -*- Entry points: -*-
