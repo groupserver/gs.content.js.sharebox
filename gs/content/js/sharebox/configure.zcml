@@ -2,15 +2,23 @@
 <configure xmlns="http://namespaces.zope.org/zope"
   xmlns:browser="http://namespaces.zope.org/browser">
 
-  <browser:resource name="sharebox-20100721.js"
+  <browser:resource 
+    name="sharebox-20121213.js"
+    file="browser/javascript/sharebox-2.js" 
+    permission="zope2.Public" />
+
+  <browser:resource 
+    name="sharebox-20100721.js"
     file="browser/javascript/sharebox.js" 
     permission="zope2.Public" />
 
-  <browser:resource name="sharebox-20100721.css"
+  <browser:resource 
+    name="sharebox-20100721.css"
     file="browser/css/sharebox.css" 
     permission="zope2.Public" />
-
-  <browser:resourceDirectory name="sharebox"
+  
+  <browser:resourceDirectory 
+    name="sharebox"
     directory="browser/images/" 
     permission="zope2.Public" />
 

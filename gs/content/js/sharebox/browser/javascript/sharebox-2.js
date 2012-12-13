@@ -16,7 +16,7 @@ var gs_content_js_sharebox_popup = function(url) {
         newWindow.focus()
     }
     return false;
-}
+};//gs_content_js_sharebox_popup
 
 
 var GSShareBox = function (link, isPublic) {
@@ -54,8 +54,8 @@ var GSShareBox = function (link, isPublic) {
         'readonly="0"/></div>';
 
     var buttonOptions = {disabled: false, 
-                         icons {primary: 'ui-arrowreturnthick-1-w', 
-                                secondary: null},
+                         icons: {primary: 'ui-icon-arrowreturnthick-1-w', 
+                                 secondary: null},
                          label: null, text: true, };
     var dialogOptions = {autoOpen: false, closeOnEscape: true, 
                          draggable: false, modal: false, resizable: true};
@@ -67,43 +67,47 @@ var GSShareBox = function (link, isPublic) {
         var retval = null;
         var shareWidgets = [URL_WIDGET];
         var i = 0;
-        var widgetsString = '';
+        var widgetString = '';
 
         if (isPublic) {
             shareWidgets = publicWidgets.concat(shareWidgets);
         }
         
         for (i in shareWidgets) {
-            widgetsString = widgetsString + shareWidgets[i];
+            widgetString = widgetString + shareWidgets[i];
         }
         widgetString = widgetString.replace(/{HREF}/g, url);
         widgetString = widgetString.replace(/{TITLE}/g, title);
 
-        retval = '<div class="' + GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS '"' +
-            'style="display:none;">' + widgetString + '</div>'
+        retval = '<div class="' + GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS +
+            '" style="display:none;">' + widgetString + '</div>'
         return retval;
-    };
+    };//dialog_html
 
 
     var popup_dialog = function(event, data) {
         if ( dialog == null ) {
-            dialog = button.after(dialog_html);
+            dialog = button.after(dialog_html).next();
             dialog.dialog(dialogOptions);
         }
         dialog.dialog("open");
-    };
+    };//popup_dialog
+
+
+    var setup = function () {
+        button = jQuery(link);
+        url = button.attr('href');
+        button.removeAttr('href');
+        title = button.attr('title');
+    }();//setup **Note** the () is deliberate so this function is run.
 
     // Public
-    return {
-        publicWidgets: [FB_WIDGET, TWITTER_WIDGET, DIGG_WIEGET, EMAIL_WIDGET],
-        init: function () {
-            button = jQuery(link);
-            url = button.attr('href');
-            button.removeAttr('href');
-            title = button.attr('title');
-            button.button(buttonOptions);
 
+    return {
+        publicWidgets: [FB_WIDGET, TWITTER_WIDGET, DIGG_WIDGET, EMAIL_WIDGET],
+        init: function () {
+            button.button(buttonOptions);
             button.click(popup_dialog);
         },// init
     }; // Public
-};
+};//GSShareBox
