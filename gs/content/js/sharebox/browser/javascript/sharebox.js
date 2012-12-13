@@ -22,6 +22,10 @@ var GSShareBox = function (link, isPublic) {
     var DIGG_URL = 'http://digg.com/submit?url={HREF}&title={TITLE}';
     var DIGG_WIDGET = '<a class="digg-share dialog button" '+
         'title="Share on Digg" href="' + DIGG_URL + '">D</a>';
+    
+    var GP_URL = 'https://plus.google.com/share?url={HREF}';
+    var GP_WIDGET = '<a class="gp-share dialog button" '+
+        'title="Share on Google+" href="' + GP_URL + '">G+</a>';
 
     // --=mpj17=-- Yes, the mailbox part of a mailto can be blank
     // http://www.ietf.org/rfc/rfc2368.txt
@@ -29,7 +33,7 @@ var GSShareBox = function (link, isPublic) {
     var EMAIL_WIDGET = '<a class="email-share button" title="Share by email"'+
         'href="' + EMAIL_URL + '">e</a>';
 
-    var public_widgets = [FB_WIDGET, TWITTER_WIDGET, DIGG_WIDGET]
+    var public_widgets = [FB_WIDGET, TWITTER_WIDGET, GP_WIDGET, DIGG_WIDGET,]
     //, EMAIL_WIDGET];
 
    var URL_WIDGET = '<div class="full-share">'+
