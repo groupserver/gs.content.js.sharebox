@@ -4,21 +4,6 @@ jQuery.noConflict();
 var GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS = 'gs-content-js-sharebox-dialog';
 
 
-var gs_content_js_sharebox_popup = function(url) {
-    var dialog = null;
-    var newWindow = null;
-
-    dialog = jQuery(this).parents('.'+GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS)[0];
-    dialog.dialog("close");
-
-    newWindow = window.open(url, 'name', 'height=414,width=666');// 37u x 23u
-    if (window.focus) {
-        newWindow.focus()
-    }
-    return false;
-};//gs_content_js_sharebox_popup
-
-
 var GSShareBox = function (link, isPublic) {
     // Private variables
     var button = null;
