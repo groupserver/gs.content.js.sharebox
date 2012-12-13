@@ -64,9 +64,19 @@ var GSShareBox = function (link, isPublic) {
 
 
     var popup_dialog = function(event, data) {
+        var offset = null;
+        var position = null;
+
         if ( dialog == null ) {
             dialog = button.after(dialog_html).next();
             dialog.dialog(dialogOptions);
+            dialog.dialog("option", "title", 'Share ' + title);
+
+            offset = button.offset()
+            position = [offset.left + button.outerWidth(), 
+                        offset.top + button.outerHeight()];
+            dialog.dialog("option", "position", position);
+
             create_buttons();
         }
         dialog.dialog("open");
