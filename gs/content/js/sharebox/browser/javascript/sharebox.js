@@ -59,7 +59,7 @@ var GSShareBox = function (link, isPublic) {
 
             offset = button.offset()
             position = [offset.left + button.outerWidth(), 
-                        offset.top + button.outerHeight()];
+                        offset.top];
             dialog.dialog("option", "position", position);
 
             create_buttons();
