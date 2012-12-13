@@ -27,28 +27,25 @@ var GSShareBox = function (link, isPublic) {
     var title = null;
 
     var FB_URL = 'http://www.facebook.com/sharer.php?u={HREF}&t={TITLE}';
-    var FB_WIDGET = '<a class="fb-share" title="Share on Facebook" '+
-        'onclick="javascript:gs_content_js_sharebox_popup(\'' + FB_URL + 
-        '\')">f</a>';
+    var FB_WIDGET = '<a class="fb-share dialog button" '+
+        'title="Share on Facebook" href="' + FB_URL + '">f</a>';
 
     var TWITTER_URL = 'http://www.twitter.com/home?status={TITLE}:+{HREF}';
-    var TWITTER_WIDGET = '<a class="twitter-share" title="Share on Twitter"' +
-        'onclick="javascript:gs_content_js_sharebox_popup(\'' + TWITTER_URL +
-        '\')">t</a>';
+    var TWITTER_WIDGET = '<a class="twitter-share dialog button" ' +
+        'title="Share on Twitter"' + 'href="' + TWITTER_URL + '">t</a>';
 
     var DIGG_URL = 'http://digg.com/submit?url={HREF}&title={TITLE}';
-    var DIGG_WIDGET = '<a class="digg-share" title="Share on Digg" '+
-        'onclick="javascript:gs_content_js_sharebox_popup(\'' + DIGG_URL + 
-        '\')">D</a>';
+    var DIGG_WIDGET = '<a class="digg-share dialog button" '+
+        'title="Share on Digg" href="' + DIGG_URL + '">D</a>';
 
     // --=mpj17=-- Yes, the mailbox part of a mailto can be blank
     // http://www.ietf.org/rfc/rfc2368.txt
     var EMAIL_URL = 'mailto:?Subject={TITLE}&body={HREF}';
-    var EMAIL_WIDGET = '<a class="email-share" title="Share by email"'+
+    var EMAIL_WIDGET = '<a class="email-share button" title="Share by email"'+
         'href="' + EMAIL_URL + '">e</a>';
 
-    var public_widgets = [FB_WIDGET, TWITTER_WIDGET, DIGG_WIDGET, 
-                          EMAIL_WIDGET];
+    var public_widgets = [FB_WIDGET, TWITTER_WIDGET, DIGG_WIDGET]
+    //, EMAIL_WIDGET];
 
    var URL_WIDGET = '<div class="full-share">'+
         '<p class="full-share-box-help">Link to this by copy/pasting the '+
@@ -65,24 +62,15 @@ var GSShareBox = function (link, isPublic) {
 
     // Private methods
 
-    var dialog_share = function(event, data) {
-        var shareButton = null;
-        var url = null;
-        var dialog = null;
 
-        shareButton = jQuery(this);
-        url = button.data('url');
-        
-        dialog = shareButton.parents('.'+GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS)[0];
-        dialog.dialog("close");
-
-        // 37u x 23u
-        newWindow = window.open(url, 'name', 'height=414,width=666');
-        if (window.focus) {
-            newWindow.focus()
+    var popup_dialog = function(event, data) {
+        if ( dialog == null ) {
+            dialog = button.after(dialog_html).next();
+            dialog.dialog(dialogOptions);
+            create_buttons();
         }
-        return false;
-    };
+        dialog.dialog("open");
+    };//popup_dialog
 
 
     var dialog_html = function () {
@@ -116,13 +104,40 @@ var GSShareBox = function (link, isPublic) {
     };//dialog_html
 
 
-    var popup_dialog = function(event, data) {
-        if ( dialog == null ) {
-            dialog = button.after(dialog_html).next();
-            dialog.dialog(dialogOptions);
+    var create_buttons = function() {
+        var buttons = null;
+        var button = null;
+        var i = 0;
+        var buttonUrl = null;
+
+        dialog.find('a.button').each(function(){jQuery(this).button()});
+        dialog.find('a.dialog').each(function(){
+            button = jQuery(this);
+            buttonUrl = button.attr('href');
+            button.removeAttr('href');
+            button.data('url', buttonUrl);
+            button.click(dialog_share);
+        });
+    };//create_buttons
+
+
+    var dialog_share = function(event) {
+        var shareButton = null;
+        var shareUrl = null;
+        var newWindow = null;
+
+        shareButton = jQuery(this);
+        shareUrl = shareButton.data('url');
+        dialog.dialog("close");
+
+        // 37u x 23u
+        newWindow = window.open(shareUrl, 'gs-content-js-sharebox-window',
+                                'height=414,width=666');
+        if (window.focus) {
+            newWindow.focus()
         }
-        dialog.dialog("open");
-    };//popup_dialog
+        return false;
+    };
 
 
     var setup = function () {
