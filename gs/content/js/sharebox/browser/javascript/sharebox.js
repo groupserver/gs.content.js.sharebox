@@ -41,7 +41,7 @@ var GSShareBox = function (link, isPublic) {
         'URL below into an email:</p> '+
         '<input class="full-share-input" type="text" value="{HREF}"'+
         'readonly="0"/></div>';
-
+    
     var buttonOptions = {disabled: false, 
                          icons: {primary: 'ui-icon-arrowreturnthick-1-w', 
                                  secondary: null},
@@ -50,9 +50,10 @@ var GSShareBox = function (link, isPublic) {
     // We set the width of the dialog so we know how wide it is without 
     // rendering it.
     var DIALOG_WIDTH = 306; // 17u
+    var EFFECT = {effect: "fade", duration: "slow", }
     var dialogOptions = {autoOpen: false, closeOnEscape: true, 
-                         draggable: false, modal: false, resizable: true,
-                         width: DIALOG_WIDTH, };
+                         draggable: false, hide: EFFECT, modal: false, 
+                         resizable: true, show: EFFECT, width: DIALOG_WIDTH, };
 
 
     // Private methods
@@ -80,7 +81,11 @@ var GSShareBox = function (link, isPublic) {
 
             create_buttons();
         }
-        dialog.dialog("open");
+        if (dialog.dialog("isOpen")) {
+            dialog.dialog("close");
+        } else {
+            dialog.dialog("open");
+        }
     };//popup_dialog
 
 
