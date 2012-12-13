@@ -46,8 +46,14 @@ var GSShareBox = function (link, isPublic) {
                          icons: {primary: 'ui-icon-arrowreturnthick-1-w', 
                                  secondary: null},
                          label: null, text: true, };
+
+    // We set the width of the dialog so we know how wide it is without 
+    // rendering it.
+    var DIALOG_WIDTH = 306; // 17u
     var dialogOptions = {autoOpen: false, closeOnEscape: true, 
-                         draggable: false, modal: false, resizable: true};
+                         draggable: false, modal: false, resizable: true,
+                         width: DIALOG_WIDTH, };
+
 
     // Private methods
 
@@ -55,6 +61,7 @@ var GSShareBox = function (link, isPublic) {
     var popup_dialog = function(event, data) {
         var offset = null;
         var position = null;
+        var cx = null;
 
         if ( dialog == null ) {
             dialog = button.after(dialog_html).next();
@@ -62,8 +69,13 @@ var GSShareBox = function (link, isPublic) {
             dialog.dialog("option", "title", 'Share ' + title);
 
             offset = button.offset()
-            position = [offset.left + button.outerWidth(), 
-                        offset.top];
+            cx = jQuery(window).width() / 2;
+            if ( offset.left <= cx ) {
+                position = [offset.left, offset.top + button.outerHeight()];
+            } else {
+                position = [(offset.left - DIALOG_WIDTH) + button.width(), 
+                            offset.top + button.outerHeight()];
+            }
             dialog.dialog("option", "position", position);
 
             create_buttons();
@@ -146,7 +158,9 @@ var GSShareBox = function (link, isPublic) {
         title = button.attr('title');
     }();//setup **Note** the () is deliberate so this function is run.
 
+
     // Public
+
 
     return {
         publicWidgets: public_widgets,
