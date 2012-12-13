@@ -4,7 +4,7 @@
 
   <browser:resource 
     name="sharebox-20121213.js"
-    file="browser/javascript/sharebox-2.js" 
+    file="browser/javascript/sharebox.js" 
     permission="zope2.Public" />
 
   <browser:resource 
