@@ -37,10 +37,10 @@ var GSShareBox = function (link, isPublic) {
     //, EMAIL_WIDGET];
 
    var URL_WIDGET = '<div class="full-share">'+
-        '<p class="full-share-box-help">Link to this by copy/pasting the '+
-        'URL below into an email:</p> '+
+        '<p class="full-share-help">Link to this by copy/pasting the '+
+        'URL below into an email:</p> <div class="full-share-entry">'+
         '<input class="full-share-input" type="text" value="{HREF}"'+
-        'readonly="0"/></div>';
+        'readonly="0"/></div></div>';
     
     var buttonOptions = {disabled: false, 
                          icons: {primary: 'ui-icon-arrowreturnthick-1-w', 
@@ -69,13 +69,15 @@ var GSShareBox = function (link, isPublic) {
             dialog.dialog(dialogOptions);
             dialog.dialog("option", "title", 'Share ' + title);
 
-            offset = button.offset()
             cx = jQuery(window).width() / 2;
-            if ( offset.left <= cx ) {
-                position = [offset.left, offset.top + button.outerHeight()];
+            if ( button.offset().left <= cx ) {
+                position = {my: "left top",
+                            at: "left bottom",
+                            of: button};
             } else {
-                position = [(offset.left - DIALOG_WIDTH) + button.width(), 
-                            offset.top + button.outerHeight()];
+                position = {my: "right top",
+                            at: "right bottom",
+                            of: button};
             }
             dialog.dialog("option", "position", position);
 
