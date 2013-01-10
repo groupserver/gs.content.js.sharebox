@@ -33,7 +33,7 @@ var GSShareBox = function (link, isPublic) {
     var EMAIL_WIDGET = '<a class="email-share button" title="Share by email"'+
         'href="' + EMAIL_URL + '">e</a>';
 
-    var public_widgets = [FB_WIDGET, TWITTER_WIDGET, GP_WIDGET, DIGG_WIDGET,]
+    var public_widgets = [FB_WIDGET, TWITTER_WIDGET, GP_WIDGET, DIGG_WIDGET]
     //, EMAIL_WIDGET];
 
    var URL_WIDGET = '<div class="full-share">'+
@@ -45,7 +45,7 @@ var GSShareBox = function (link, isPublic) {
     var buttonOptions = {disabled: false, 
                          icons: {primary: 'ui-icon-arrowreturnthick-1-w', 
                                  secondary: null},
-                         label: null, text: true, };
+                         label: null, text: true };
 
     // We set the width of the dialog so we know how wide it is without 
     // rendering it.
@@ -53,7 +53,7 @@ var GSShareBox = function (link, isPublic) {
     var EFFECT = {effect: "fade", duration: "slow", }
     var dialogOptions = {autoOpen: false, closeOnEscape: true, 
                          draggable: false, hide: EFFECT, modal: false, 
-                         resizable: true, show: EFFECT, width: DIALOG_WIDTH, };
+                         resizable: true, show: EFFECT, width: DIALOG_WIDTH};
 
 
     // Private methods
@@ -174,6 +174,6 @@ var GSShareBox = function (link, isPublic) {
         init: function () {
             button.button(buttonOptions);
             button.click(popup_dialog);
-        },// init
+        }// init
     }; // Public
 };//GSShareBox
