@@ -51,10 +51,7 @@ var GSShareBox = function (link, isPublic) {
     // rendering it.
     var DIALOG_WIDTH = 306; // 17u
     var EFFECT = {effect: "fade", duration: "slow", }
-    var dialogOptions = {autoOpen: false, closeOnEscape: true, 
-                         draggable: false, hide: EFFECT, modal: false, 
-                         resizable: true, show: EFFECT, width: DIALOG_WIDTH};
-
+    var dialogOptions = {animation: true, placement: 'bottom'};
 
     // Private methods
 
@@ -66,28 +63,11 @@ var GSShareBox = function (link, isPublic) {
 
         if ( dialog == null ) {
             dialog = button.after(dialog_html).next();
-            dialog.dialog(dialogOptions);
-            dialog.dialog("option", "title", 'Share ' + title);
-
-            cx = jQuery(window).width() / 2;
-            if ( button.offset().left <= cx ) {
-                position = {my: "left top",
-                            at: "left bottom",
-                            of: button};
-            } else {
-                position = {my: "right top",
-                            at: "right bottom",
-                            of: button};
-            }
-            dialog.dialog("option", "position", position);
-
+            dialog.popover(dialogOptions);
+            dialog.popover("option", "title", 'Share ' + title);
             create_buttons();
         }
-        if (dialog.dialog("isOpen")) {
-            dialog.dialog("close");
-        } else {
-            dialog.dialog("open");
-        }
+        dialog.popover('toggle');
     };//popup_dialog
 
 
@@ -146,7 +126,7 @@ var GSShareBox = function (link, isPublic) {
 
         shareButton = jQuery(this);
         shareUrl = shareButton.data('url');
-        dialog.dialog("close");
+        dialog.popover("hide");
 
         // 37u x 23u
         newWindow = window.open(shareUrl, 'gs-content-js-sharebox-window',
