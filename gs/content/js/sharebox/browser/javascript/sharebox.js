@@ -67,7 +67,7 @@ var GSShareBox = function (link, isPublic) {
         }
 
         widgetString = '<div class="gs-content-js-sharebox-dialog-widgets">' +
-            '<div class="gs-content-js-sharebox-dialog-widgets-public">' + 
+            '<div class="btn-toolbar gs-content-js-sharebox-dialog-widgets-public">' + 
             publicWidgetString + '</div>' +
             '<div class="gs-content-js-sharebox-dialog-widgets-private">' + 
             privateWidgetString + '</div>';
