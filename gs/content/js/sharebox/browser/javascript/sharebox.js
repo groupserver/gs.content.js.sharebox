@@ -7,30 +7,29 @@ var GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS = 'gs-content-js-sharebox-dialog';
 var GSShareBox = function (link, isPublic) {
     // Private variables
     var button = null;
-    var dialog = null;
     var url = null;
     var title = null;
 
     var FB_URL = 'http://www.facebook.com/sharer.php?u={HREF}&t={TITLE}';
-    var FB_WIDGET = '<a class="fb-share dialog button" '+
+    var FB_WIDGET = '<a class="fb-share dialog btn" '+
         'title="Share on Facebook" href="' + FB_URL + '">f</a>';
 
     var TWITTER_URL = 'http://www.twitter.com/home?status={TITLE}:+{HREF}';
-    var TWITTER_WIDGET = '<a class="twitter-share dialog button" ' +
+    var TWITTER_WIDGET = '<a class="twitter-share dialog btn" ' +
         'title="Share on Twitter"' + 'href="' + TWITTER_URL + '">t</a>';
 
     var DIGG_URL = 'http://digg.com/submit?url={HREF}&title={TITLE}';
-    var DIGG_WIDGET = '<a class="digg-share dialog button" '+
+    var DIGG_WIDGET = '<a class="digg-share dialog btn" '+
         'title="Share on Digg" href="' + DIGG_URL + '">D</a>';
     
     var GP_URL = 'https://plus.google.com/share?url={HREF}';
-    var GP_WIDGET = '<a class="gp-share dialog button" '+
+    var GP_WIDGET = '<a class="gp-share dialog btn" '+
         'title="Share on Google+" href="' + GP_URL + '">G+</a>';
 
     // --=mpj17=-- Yes, the mailbox part of a mailto can be blank
     // http://www.ietf.org/rfc/rfc2368.txt
     var EMAIL_URL = 'mailto:?Subject={TITLE}&body={HREF}';
-    var EMAIL_WIDGET = '<a class="email-share button" title="Share by email"'+
+    var EMAIL_WIDGET = '<a class="email-share btn" title="Share by email"'+
         'href="' + EMAIL_URL + '">e</a>';
 
     var public_widgets = [FB_WIDGET, TWITTER_WIDGET, GP_WIDGET, DIGG_WIDGET]
@@ -82,19 +81,20 @@ var GSShareBox = function (link, isPublic) {
     };//dialog_html
 
 
-    var create_buttons = function() {
+    var create_buttons = function(event) {
         var buttons = null;
-        var button = null;
+        var littleButton = null;
         var i = 0;
         var buttonUrl = null;
+        var dialog = null;
 
-        dialog.find('a.button').each(function(){jQuery(this).button()});
+        dialog = button.next('.popover');
         dialog.find('a.dialog').each(function(){
-            button = jQuery(this);
-            buttonUrl = button.attr('href');
-            button.removeAttr('href');
-            button.data('url', buttonUrl);
-            button.click(dialog_share);
+            littleButton = jQuery(this);
+            buttonUrl = littleButton.attr('href');
+            littleButton.removeAttr('href');
+            littleButton.data('url', buttonUrl);
+            littleButton.click(dialog_share);
         });
     };//create_buttons
 
@@ -106,7 +106,7 @@ var GSShareBox = function (link, isPublic) {
 
         shareButton = jQuery(this);
         shareUrl = shareButton.data('url');
-        dialog.popover("hide");
+        button.popover("hide");
 
         // 37u x 23u
         newWindow = window.open(shareUrl, 'gs-content-js-sharebox-window',
@@ -126,6 +126,7 @@ var GSShareBox = function (link, isPublic) {
         title = button.attr('title');
         popoverOptions['title'] = 'Share ' + title;
         button.popover(popoverOptions);
+        button.on('click', create_buttons);
     }();//setup **Note** the () is deliberate so this function is run.
 
 
@@ -135,8 +136,6 @@ var GSShareBox = function (link, isPublic) {
     return {
         publicWidgets: public_widgets,
         init: function () {
-            //button.button(buttonOptions);
-            //button.click(popup_dialog);
         }// init
     }; // Public
 };//GSShareBox
