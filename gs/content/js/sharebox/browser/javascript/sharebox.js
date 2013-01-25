@@ -42,34 +42,13 @@ var GSShareBox = function (link, isPublic) {
         '<input class="full-share-input" type="text" value="{HREF}"'+
         'readonly="0"/></div></div>';
     
-    var buttonOptions = {disabled: false, 
-                         icons: {primary: 'ui-icon-arrowreturnthick-1-w', 
-                                 secondary: null},
-                         label: null, text: true };
-
+    var buttonOptions = { };
     // We set the width of the dialog so we know how wide it is without 
     // rendering it.
     var DIALOG_WIDTH = 306; // 17u
     var EFFECT = {effect: "fade", duration: "slow", }
-    var dialogOptions = {animation: true, placement: 'bottom'};
 
     // Private methods
-
-
-    var popup_dialog = function(event, data) {
-        var offset = null;
-        var position = null;
-        var cx = null;
-
-        if ( dialog == null ) {
-            dialog = button.after(dialog_html).next();
-            dialog.popover(dialogOptions);
-            dialog.popover("option", "title", 'Share ' + title);
-            create_buttons();
-        }
-        dialog.popover('toggle');
-    };//popup_dialog
-
 
     var dialog_html = function () {
         var retval = null;
@@ -92,12 +71,13 @@ var GSShareBox = function (link, isPublic) {
             '<div class="gs-content-js-sharebox-dialog-widgets-public">' + 
             publicWidgetString + '</div>' +
             '<div class="gs-content-js-sharebox-dialog-widgets-private">' + 
-            privateWidgetString + '</div>'
+            privateWidgetString + '</div>';
         widgetString = widgetString.replace(/{HREF}/g, url);
         widgetString = widgetString.replace(/{TITLE}/g, title);
 
-        retval = '<div class="' + GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS +
-            '" style="display:none;">' + widgetString + '</div>'
+        retval = '<div class="' + GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS + '">' + 
+            widgetString + '</div>';
+        
         return retval;
     };//dialog_html
 
@@ -137,12 +117,15 @@ var GSShareBox = function (link, isPublic) {
         return false;
     };
 
-
     var setup = function () {
+        var popoverOptions = {amimation: true, html: true, placement: 'bottom',
+                          trigger: 'click', content: dialog_html}
         button = jQuery(link);
         url = button.attr('href');
         button.removeAttr('href');
         title = button.attr('title');
+        popoverOptions['title'] = 'Share ' + title;
+        button.popover(popoverOptions);
     }();//setup **Note** the () is deliberate so this function is run.
 
 
@@ -152,8 +135,8 @@ var GSShareBox = function (link, isPublic) {
     return {
         publicWidgets: public_widgets,
         init: function () {
-            button.button(buttonOptions);
-            button.click(popup_dialog);
+            //button.button(buttonOptions);
+            //button.click(popup_dialog);
         }// init
     }; // Public
 };//GSShareBox
