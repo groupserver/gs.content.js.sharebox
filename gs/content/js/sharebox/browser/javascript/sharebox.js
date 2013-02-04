@@ -40,12 +40,6 @@ var GSShareBox = function (link, isPublic) {
         'URL below into an email:</p> <div class="full-share-entry">'+
         '<input class="full-share-input" type="text" value="{HREF}"'+
         'readonly="0"/></div></div>';
-    
-    var buttonOptions = { };
-    // We set the width of the dialog so we know how wide it is without 
-    // rendering it.
-    var DIALOG_WIDTH = 306; // 17u
-    var EFFECT = {effect: "fade", duration: "slow", }
 
     // Private methods
 
