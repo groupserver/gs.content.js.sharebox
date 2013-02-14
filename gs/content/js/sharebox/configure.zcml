@@ -3,10 +3,18 @@
   xmlns:browser="http://namespaces.zope.org/browser">
 
   <browser:resource 
+    name="gs-content-js-sharebox-20130114.js"
+    file="browser/javascript/sharebox.js" 
+    permission="zope2.Public" />
+  <browser:resource 
+    name="gs-content-js-sharebox-min-20130114.js"
+    file="browser/javascript/sharebox-min.js" 
+    permission="zope2.Public" />
+
+  <browser:resource 
     name="sharebox-20121213.js"
     file="browser/javascript/sharebox.js" 
     permission="zope2.Public" />
-
   <browser:resource 
     name="sharebox-20100721.js"
     file="browser/javascript/sharebox.js" 
