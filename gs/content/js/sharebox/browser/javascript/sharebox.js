@@ -20,8 +20,10 @@ function GSShareBox(link, isPublic) {
          GP_WIDGET = '<a class="gp-share dialog btn" '+
              'title="Share on Google+" href="' + GP_URL + '">G+</a>',
          URL_WIDGET = '<div class="full-share">'+
-             '<p class="full-share-help">Link to this by copy/pasting the '+
-             'URL below into an email:</p> <div class="full-share-entry">'+
+             '<p class="full-share-help muted">or use the '+ 
+              '<abbr title="Uniform Resource Locator"'+
+                    'class="initialism">URL</abbr>:'+
+             '</p> <div class="full-share-entry">'+
              '<input class="full-share-input" type="text" value="{HREF}"'+
              'readonly="0"/></div></div>';
     public_widgets = [FB_WIDGET, TWITTER_WIDGET, GP_WIDGET, DIGG_WIDGET];
@@ -49,7 +51,8 @@ function GSShareBox(link, isPublic) {
         }
 
         widgetString = '<div class="gs-content-js-sharebox-dialog-widgets">' +
-            '<div class="btn-toolbar gs-content-js-sharebox-dialog-widgets-public">' + 
+            '<p class="muted">Share with</p>'+
+            '<div class="btn-toolbar gs-content-js-sharebox-dialog-widgets-public">' +
             publicWidgetString + '</div>' +
             '<div class="gs-content-js-sharebox-dialog-widgets-private">' + 
             privateWidgetString + '</div>';
