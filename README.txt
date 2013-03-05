@@ -25,12 +25,12 @@ JavaScript
 The JavaScript for the *Share* dialog is contained in a resource::
 
   <script type="text/javascript"
-    src="/++resource++gs-content-js-sharebox-20130114.js">&#160;</script>
+    src="/++resource++gs-content-js-sharebox-20130305.js">&#160;</script>
 
 Or a minified version::
 
   <script type="text/javascript"
-    src="/++resource++gs-content-js-sharebox-min-20130114.js">&#160;</script>
+    src="/++resource++gs-content-js-sharebox-min-20130305.js">&#160;</script>
 
 Within the document the links to be shared need a ``title`` attribute and
 an ``href`` attribute. The content of the link-element will become the
