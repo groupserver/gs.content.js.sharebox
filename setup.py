@@ -24,6 +24,8 @@ setup(name='gs.content.js.sharebox',
       zip_safe=True,
       install_requires=[
           'setuptools',
+          'zope.browserresource',
+          'gs.content.js.bootstrap',
           'gs.content.js.jquery',
           'gs.help',
       ],
