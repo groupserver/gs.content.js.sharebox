@@ -1,3 +1,18 @@
+==========================
+``gs.content.js.sharebox``
+==========================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+An interface for sharing documents
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:Author: `Michael JasonSmith`_
+:Contact: Michael JasonSmith <mpj17@onlinegroups.net>
+:Date: 2013-03-18
+:Organization: `GroupServer.org`_
+:Copyright: This document is licensed under a
+  `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
+  by `OnlineGroups.Net`_.
+
 Introduction
 ============
 
@@ -8,7 +23,7 @@ media networks.
 Dialog
 ======
 
-The dialog is a `jQuery.UI`_ dialog. It is divided in two parts.
+The dialog is a Bootstrap_ Popover_. It is divided in two parts.
 
 *  The first part is a list of *buttons* for various social media services
    (currently Facebook_, Twitter_, `Google+`_, and Digg_). These buttons
@@ -46,7 +61,7 @@ to it::
 
   <script type="text/javascript">
     jQuery.noConflict();
-    jQuery(document).ready(function(){
+    jQuery(window).load(function(){
       var public = true;
       jQuery('.gs-content-js-share').each(function () {
         shareWidget = GSShareBox(this, public);
@@ -75,7 +90,13 @@ Resources
 - Report bugs at https://redmine.iopen.net/projects/groupserver
 
 .. _GroupServer: http://groupserver.org/
-.. _jQuery.UI: http://jqueryui.com/
+.. _GroupServer.org: http://groupserver.org/
+.. _OnlineGroups.Net: https://onlinegroups.net
+.. _Michael JasonSmith: http://groupserver.org/p/mpj17
+.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
+   http://creativecommons.org/licenses/by-sa/3.0/nz/
+.. _Boostrap: http://twitter.github.com/bootstrap
+.. _Popover: http://twitter.github.com/bootstrap/javascript.html#popovers
 .. _Facebook: http://facebook.com/
 .. _Twitter: http://twitter.com/
 .. _Google+: https://plus.google.com/
