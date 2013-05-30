@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 import os
 
@@ -26,7 +27,7 @@ setup(name='gs.content.js.sharebox',
           'setuptools',
           'zope.browserresource',
           'gs.content.js.bootstrap',
-          'gs.content.js.jquery',
+          'gs.content.js.jquery.base',
           'gs.help',
       ],
       entry_points="""
