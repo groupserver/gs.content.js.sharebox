@@ -8,17 +8,17 @@ function GSShareBox(link, isPublic) {
     // Private variables
     var button = null, url = null, title = null, public_widgets = null,
         FB_URL = 'http://www.facebook.com/sharer.php?u={HREF}&t={TITLE}',
-        FB_WIDGET = '<a class="fb-share dialog btn" '+
-            'title="Share on Facebook" href="' + FB_URL + '">f</a>',
+        FB_WIDGET = '<a class="fb-share dialog btn" data-icon="f" '+
+            'title="Share on Facebook" href="' + FB_URL + '"></a>',
         TWITTER_URL = 'http://www.twitter.com/home?status={TITLE}:+{HREF}',
-        TWITTER_WIDGET = '<a class="twitter-share dialog btn" ' +
-            'title="Share on Twitter"' + 'href="' + TWITTER_URL + '">t</a>',
-         DIGG_URL = 'http://digg.com/submit?url={HREF}&title={TITLE}',
-         DIGG_WIDGET = '<a class="digg-share dialog btn" '+
-             'title="Share on Digg" href="' + DIGG_URL + '">D</a>',
+        TWITTER_WIDGET = '<a class="twitter-share dialog btn" data-icon="t" '+
+            'title="Share on Twitter"' + 'href="' + TWITTER_URL + '"></a>',
+         //DIGG_URL = 'http://digg.com/submit?url={HREF}&title={TITLE}',
+         //DIGG_WIDGET = '<a class="digg-share dialog btn" '+
+         //    'title="Share on Digg" href="' + DIGG_URL + '">D</a>',
          GP_URL = 'https://plus.google.com/share?url={HREF}',
-         GP_WIDGET = '<a class="gp-share dialog btn" '+
-             'title="Share on Google+" href="' + GP_URL + '">G+</a>',
+         GP_WIDGET = '<a class="gp-share dialog btn" data-icon="g" '+
+             'title="Share on Google+" href="' + GP_URL + '"></a>',
          URL_WIDGET = '<div class="full-share">'+
              '<p class="full-share-help muted">or use the '+ 
               '<abbr title="Uniform Resource Locator"'+
@@ -26,7 +26,7 @@ function GSShareBox(link, isPublic) {
              '</p> <div class="full-share-entry">'+
              '<input class="full-share-input" type="text" value="{HREF}"'+
              'readonly="0"/></div></div>';
-    public_widgets = [FB_WIDGET, TWITTER_WIDGET, GP_WIDGET, DIGG_WIDGET];
+    public_widgets = [FB_WIDGET, TWITTER_WIDGET, GP_WIDGET]; //, DIGG_WIDGET];
     // --=mpj17=-- Yes, the mailbox part of a mailto can be blank
     // http://www.ietf.org/rfc/rfc2368.txt
     //     EMAIL_URL = 'mailto:?Subject={TITLE}&body={HREF}',

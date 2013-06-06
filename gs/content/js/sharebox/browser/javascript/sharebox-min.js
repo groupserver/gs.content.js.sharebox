@@ -1,11 +1,11 @@
 jQuery.noConflict();var GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS="gs-content-js-sharebox-dialog";
-function GSShareBox(i,j){var a=null,f=null,s=null,g=null,b="http://www.facebook.com/sharer.php?u={HREF}&t={TITLE}",d='<a class="fb-share dialog btn" title="Share on Facebook" href="'+b+'">f</a>',q="http://www.twitter.com/home?status={TITLE}:+{HREF}",n='<a class="twitter-share dialog btn" title="Share on Twitter"href="'+q+'">t</a>',k="http://digg.com/submit?url={HREF}&title={TITLE}",r='<a class="digg-share dialog btn" title="Share on Digg" href="'+k+'">D</a>',p="https://plus.google.com/share?url={HREF}",e='<a class="gp-share dialog btn" title="Share on Google+" href="'+p+'">G+</a>',m='<div class="full-share"><p class="full-share-help muted">or use the <abbr title="Uniform Resource Locator"class="initialism">URL</abbr>:</p> <div class="full-share-entry"><input class="full-share-input" type="text" value="{HREF}"readonly="0"/></div></div>';
-g=[d,n,e,r];function h(){var t=null,w=[m],u=0,v="",y="",x="";if(j){for(u in g){y=y+g[u]
-}}for(u in w){v=v+w[u]}x='<div class="gs-content-js-sharebox-dialog-widgets"><p class="muted">Share with</p><div class="btn-toolbar gs-content-js-sharebox-dialog-widgets-public">'+y+'</div><div class="gs-content-js-sharebox-dialog-widgets-private">'+v+"</div>";
-x=x.replace(/{HREF}/g,f);x=x.replace(/{TITLE}/g,s);t='<div class="'+GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS+'">'+x+"</div>";
-return t}function o(v){var t=null,w=null,u=null;u=a.next(".popover");u.find("a.dialog").each(function(){t=jQuery(this);
-w=t.attr("href");t.removeAttr("href");t.data("url",w);t.click(c)})}function c(t){var w=null,v=null,u=null;
-w=jQuery(this);v=w.data("url");a.popover("hide");u=window.open(v,"gs-content-js-sharebox-window","height=414,width=666");
-if(window.focus){u.focus()}return false}function l(){var t={amimation:true,html:true,placement:"bottom",trigger:"click",content:h};
-a=jQuery(i);f=a.attr("href");a.removeAttr("href");s=a.attr("title");t.title="Share "+s;
-a.popover(t);a.on("click",o)}l();return{publicWidgets:g,init:function(){}}};
+function GSShareBox(n,q){var g=null,a=null,p=null,j=null,e="http://www.facebook.com/sharer.php?u={HREF}&t={TITLE}",f='<a class="fb-share dialog btn" data-icon="f" title="Share on Facebook" href="'+e+'"></a>',o="http://www.twitter.com/home?status={TITLE}:+{HREF}",c='<a class="twitter-share dialog btn" data-icon="t" title="Share on Twitter"href="'+o+'"></a>',h="https://plus.google.com/share?url={HREF}",b='<a class="gp-share dialog btn" data-icon="g" title="Share on Google+" href="'+h+'">G+</a>',l='<div class="full-share"><p class="full-share-help muted">or use the <abbr title="Uniform Resource Locator"class="initialism">URL</abbr>:</p> <div class="full-share-entry"><input class="full-share-input" type="text" value="{HREF}"readonly="0"/></div></div>';
+j=[f,c,b];function k(){var r=null,u=[l],s=0,t="",w="",v="";if(q){for(s in j){w=w+j[s]
+}}for(s in u){t=t+u[s]}v='<div class="gs-content-js-sharebox-dialog-widgets"><p class="muted">Share with</p><div class="btn-toolbar gs-content-js-sharebox-dialog-widgets-public">'+w+'</div><div class="gs-content-js-sharebox-dialog-widgets-private">'+t+"</div>";
+v=v.replace(/{HREF}/g,a);v=v.replace(/{TITLE}/g,p);r='<div class="'+GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS+'">'+v+"</div>";
+return r}function m(t){var r=null,u=null,s=null;s=g.next(".popover");s.find("a.dialog").each(function(){r=jQuery(this);
+u=r.attr("href");r.removeAttr("href");r.data("url",u);r.click(i)})}function i(r){var u=null,t=null,s=null;
+u=jQuery(this);t=u.data("url");g.popover("hide");s=window.open(t,"gs-content-js-sharebox-window","height=414,width=666");
+if(window.focus){s.focus()}return false}function d(){var r={amimation:true,html:true,placement:"bottom",trigger:"click",content:k};
+g=jQuery(n);a=g.attr("href");g.removeAttr("href");p=g.attr("title");r.title="Share "+p;
+g.popover(r);g.on("click",m)}d();return{publicWidgets:j,init:function(){}}};
