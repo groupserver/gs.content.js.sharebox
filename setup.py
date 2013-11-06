@@ -29,7 +29,7 @@ setup(name='gs.content.js.sharebox',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['gs'],
       include_package_data=True,
-      zip_safe=True,
+      zip_safe=False,
       install_requires=[
           'setuptools',
           'gs.content.js.bootstrap',
