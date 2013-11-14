@@ -1,4 +1,15 @@
 // Sharing a link from GroupServer
+//
+// Copyright © 2013 OnlineGroups.net and Contributors.
+// All Rights Reserved.
+//
+// This software is subject to the provisions of the Zope Public License,
+// Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+// THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+// WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+// WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+// FOR A PARTICULAR PURPOSE.
+//
 jQuery.noConflict();
 
 var GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS = 'gs-content-js-sharebox-dialog';
@@ -9,23 +20,19 @@ function GSShareBox(link, isPublic) {
     var button = null, url = null, title = null, public_widgets = null,
         FB_URL = 'http://www.facebook.com/sharer.php?u={HREF}&t={TITLE}',
         FB_WIDGET = '<a class="fb-share dialog btn" data-icon="f" '+
-            'title="Share on Facebook" href="' + FB_URL + '"></a>',
+            'title="Share with Facebook" href="' + FB_URL + '"></a>',
         TWITTER_URL = 'http://www.twitter.com/home?status={TITLE}:+{HREF}',
         TWITTER_WIDGET = '<a class="twitter-share dialog btn" data-icon="t" '+
-            'title="Share on Twitter"' + 'href="' + TWITTER_URL + '"></a>',
+            'title="Share with Twitter"' + 'href="' + TWITTER_URL + '"></a>',
          //DIGG_URL = 'http://digg.com/submit?url={HREF}&title={TITLE}',
          //DIGG_WIDGET = '<a class="digg-share dialog btn" '+
-         //    'title="Share on Digg" href="' + DIGG_URL + '">D</a>',
+         //    'title="Share with Digg" href="' + DIGG_URL + '">D</a>',
          GP_URL = 'https://plus.google.com/share?url={HREF}',
          GP_WIDGET = '<a class="gp-share dialog btn" data-icon="g" '+
-             'title="Share on Google+" href="' + GP_URL + '"></a>',
+             'title="Share with Google+" href="' + GP_URL + '"></a>',
          URL_WIDGET = '<div class="full-share">'+
-             '<p class="full-share-help muted">or use the '+
-              '<abbr title="Uniform Resource Locator"'+
-                    'class="initialism">URL</abbr>:'+
-             '</p> <div class="full-share-entry">'+
              '<input class="full-share-input" type="text" value="{HREF}"'+
-             'readonly="0"/></div></div>';
+             'readonly="0"/></div>';
     public_widgets = [FB_WIDGET, TWITTER_WIDGET, GP_WIDGET]; //, DIGG_WIDGET];
     // --=mpj17=-- Yes, the mailbox part of a mailto can be blank
     // http://www.ietf.org/rfc/rfc2368.txt
@@ -41,21 +48,33 @@ function GSShareBox(link, isPublic) {
             privateWidgetString = '', publicWidgetString = '',
             widgetString = '';
 
+        for (i in privateWidgets) {
+            privateWidgetString = privateWidgetString + privateWidgets[i];
+        }
         if (isPublic) {
             for (i in public_widgets) {
                 publicWidgetString = publicWidgetString + public_widgets[i];
             }
-        }
-        for (i in privateWidgets) {
-            privateWidgetString = privateWidgetString + privateWidgets[i];
+            publicWidgetString = publicWidgetString + '<span>or use</span>';
+            widgetString =
+                '<div class="gs-content-js-sharebox-dialog-widgets">' +
+                '<p class="muted">Share with</p>'+
+                '<div class="btn-toolbar '+
+                'gs-content-js-sharebox-dialog-widgets-public">' +
+                publicWidgetString + '</div>' +
+                '<div class="gs-content-js-sharebox-dialog-widgets-private">'+
+                '<p class="muted">or use the <abbr title="Web link '+
+                '(uniform resource locator)">URL:</abbr></p>' +
+                privateWidgetString + '</div>';
+        } else { // Private
+            widgetString =
+                '<div class="gs-content-js-sharebox-dialog-widgets">' +
+                '<p class="muted">Share with the '+
+                '<abbr title="Web link (uniform resource '+
+                'locator)">URL:</abbr></p>' +
+                privateWidgetString + '</div>';
         }
 
-        widgetString = '<div class="gs-content-js-sharebox-dialog-widgets">' +
-            '<p class="muted">Share with</p>'+
-            '<div class="btn-toolbar gs-content-js-sharebox-dialog-widgets-public">' +
-            publicWidgetString + '</div>' +
-            '<div class="gs-content-js-sharebox-dialog-widgets-private">' +
-            privateWidgetString + '</div>';
         widgetString = widgetString.replace(/{HREF}/g, url);
         widgetString = widgetString.replace(/{TITLE}/g, title);
 
