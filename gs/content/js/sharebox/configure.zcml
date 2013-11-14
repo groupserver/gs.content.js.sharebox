@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Copyright © 2013 OnlineGroups.net and Contributors. -->
+<!-- All Rights Reserved. -->
+
+<!-- This software is subject to the provisions of the Zope Public -->
+<!-- License, Version 2.1 (ZPL).  A copy of the ZPL should accompany this -->
+<!-- distribution. -->
+
+<!-- THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED -->
+<!-- WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED -->
+<!-- WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND -->
+<!-- FITNESS FOR A PARTICULAR PURPOSE. -->
 <configure xmlns="http://namespaces.zope.org/zope"
-  xmlns:browser="http://namespaces.zope.org/browser">
+           xmlns:browser="http://namespaces.zope.org/browser">
 
   <include package="zope.viewlet" file="meta.zcml" />
 
   <browser:resource
-    name="gs-content-js-sharebox-20130305.js"
+    name="gs-content-js-sharebox-20131114.js"
     file="browser/javascript/sharebox.js"
     permission="zope2.Public" />
   <browser:resource
-    name="gs-content-js-sharebox-min-20130305.js"
+    name="gs-content-js-sharebox-min-20131114.js"
     file="browser/javascript/sharebox-min.js"
     permission="zope2.Public" />
 

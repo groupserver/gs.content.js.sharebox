@@ -7,7 +7,7 @@ An interface for sharing documents
 
 :Author: `Michael JasonSmith`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2013-03-18
+:Date: 2013-11-14
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -31,8 +31,9 @@ The dialog is a Bootstrap_ Popover_. It is divided in two parts.
    (an anonymous viewer).
 
 * The second part is an ``input`` element, with the URL in it. This allows
-  people to copy and paste the URL into anything. It is always available
-  (but the recipient must have permission to view the URL).
+  people to copy and paste the URL for the object that is being shared. It
+  is always available (but the recipient must have permission to view the
+  URL).
 
 JavaScript
 ==========
@@ -40,12 +41,12 @@ JavaScript
 The JavaScript for the *Share* dialog is contained in a resource::
 
   <script type="text/javascript"
-    src="/++resource++gs-content-js-sharebox-20130305.js">&#160;</script>
+    src="/++resource++gs-content-js-sharebox-20131114.js">&#160;</script>
 
 Or a minified version::
 
   <script type="text/javascript"
-    src="/++resource++gs-content-js-sharebox-min-20130305.js">&#160;</script>
+    src="/++resource++gs-content-js-sharebox-min-20131114.js">&#160;</script>
 
 Within the document the links to be shared need a ``title`` attribute and
 an ``href`` attribute. The content of the link-element will become the
