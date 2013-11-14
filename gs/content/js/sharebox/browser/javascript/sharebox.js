@@ -20,7 +20,7 @@ function GSShareBox(link, isPublic) {
          GP_WIDGET = '<a class="gp-share dialog btn" data-icon="g" '+
              'title="Share on Google+" href="' + GP_URL + '"></a>',
          URL_WIDGET = '<div class="full-share">'+
-             '<p class="full-share-help muted">or use the '+ 
+             '<p class="full-share-help muted">or use the '+
               '<abbr title="Uniform Resource Locator"'+
                     'class="initialism">URL</abbr>:'+
              '</p> <div class="full-share-entry">'+
@@ -37,7 +37,7 @@ function GSShareBox(link, isPublic) {
     // Private methods
 
     function dialog_html() {
-        var retval = null, privateWidgets = [URL_WIDGET], i = 0, 
+        var retval = null, privateWidgets = [URL_WIDGET], i = 0,
             privateWidgetString = '', publicWidgetString = '',
             widgetString = '';
 
@@ -54,14 +54,14 @@ function GSShareBox(link, isPublic) {
             '<p class="muted">Share with</p>'+
             '<div class="btn-toolbar gs-content-js-sharebox-dialog-widgets-public">' +
             publicWidgetString + '</div>' +
-            '<div class="gs-content-js-sharebox-dialog-widgets-private">' + 
+            '<div class="gs-content-js-sharebox-dialog-widgets-private">' +
             privateWidgetString + '</div>';
         widgetString = widgetString.replace(/{HREF}/g, url);
         widgetString = widgetString.replace(/{TITLE}/g, title);
 
-        retval = '<div class="' + GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS + '">' + 
+        retval = '<div class="' + GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS + '">' +
             widgetString + '</div>';
-        
+
         return retval;
     };//dialog_html
 
