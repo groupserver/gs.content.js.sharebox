@@ -34,7 +34,8 @@ setup(name='gs.content.js.sharebox',
           'setuptools',
           'gs.content.js.bootstrap',
       ],
-      extras_require={'zope': ['zope.browserresource', 'gs.help']},
+      extras_require={'zope': ['zope.browserresource', 'zope.viewlet',
+                               'gs.help']},
       entry_points="""
       # -*- Entry points: -*-
       """,

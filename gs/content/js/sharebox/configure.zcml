@@ -2,32 +2,34 @@
 <configure xmlns="http://namespaces.zope.org/zope"
   xmlns:browser="http://namespaces.zope.org/browser">
 
-  <browser:resource 
+  <include package="zope.viewlet" file="meta.zcml" />
+
+  <browser:resource
     name="gs-content-js-sharebox-20130305.js"
-    file="browser/javascript/sharebox.js" 
+    file="browser/javascript/sharebox.js"
     permission="zope2.Public" />
-  <browser:resource 
+  <browser:resource
     name="gs-content-js-sharebox-min-20130305.js"
-    file="browser/javascript/sharebox-min.js" 
+    file="browser/javascript/sharebox-min.js"
     permission="zope2.Public" />
 
-  <browser:resource 
+  <browser:resource
     name="sharebox-20121213.js"
-    file="browser/javascript/sharebox.js" 
+    file="browser/javascript/sharebox.js"
     permission="zope2.Public" />
-  <browser:resource 
+  <browser:resource
     name="sharebox-20100721.js"
-    file="browser/javascript/sharebox.js" 
+    file="browser/javascript/sharebox.js"
     permission="zope2.Public" />
 
-  <browser:resource 
+  <browser:resource
     name="sharebox-20100721.css"
-    file="browser/css/sharebox.css" 
+    file="browser/css/sharebox.css"
     permission="zope2.Public" />
-  
-  <browser:resourceDirectory 
+
+  <browser:resourceDirectory
     name="sharebox"
-    directory="browser/images/" 
+    directory="browser/images/"
     permission="zope2.Public" />
 
   <!--Help-->
@@ -38,5 +40,5 @@
     weight="14" />
   <!--This weight of 14 puts the Share Box help after the help for the
     - Image page -->
-  
+
 </configure>
