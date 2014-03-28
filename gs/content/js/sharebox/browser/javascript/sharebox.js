@@ -1,6 +1,7 @@
+"use strict";
 // Sharing a link from GroupServer
 //
-// Copyright © 2013 OnlineGroups.net and Contributors.
+// Copyright © 2013, 2014 OnlineGroups.net and Contributors.
 // All Rights Reserved.
 //
 // This software is subject to the provisions of the Zope Public License,
@@ -17,7 +18,7 @@ var GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS = 'gs-content-js-sharebox-dialog';
 
 function GSShareBox(link, isPublic) {
     // Private variables
-    var button = null, url = null, title = null, public_widgets = null,
+    var button=null, url=null, title=null, public_widgets=null,
         FB_URL = 'http://www.facebook.com/sharer.php?u={HREF}&t={TITLE}',
         FB_WIDGET = '<a class="fb-share dialog btn" data-icon="f" '+
             'title="Share with Facebook" href="' + FB_URL + '"></a>',
@@ -44,9 +45,9 @@ function GSShareBox(link, isPublic) {
     // Private methods
 
     function dialog_html() {
-        var retval = null, privateWidgets = [URL_WIDGET], i = 0,
-            privateWidgetString = '', publicWidgetString = '',
-            widgetString = '';
+        var retval=null, privateWidgets=[URL_WIDGET], i=0,
+            privateWidgetString='', publicWidgetString='',
+            widgetString='';
 
         for (i in privateWidgets) {
             privateWidgetString = privateWidgetString + privateWidgets[i];
@@ -82,11 +83,11 @@ function GSShareBox(link, isPublic) {
             widgetString + '</div>';
 
         return retval;
-    };//dialog_html
+    }//dialog_html
 
 
     function create_buttons(event) {
-        var littleButton = null, buttonUrl = null, dialog = null;
+        var littleButton=null, buttonUrl=null, dialog=null;
 
         dialog = button.next('.popover');
         dialog.find('a.dialog').each(function(){
@@ -96,11 +97,11 @@ function GSShareBox(link, isPublic) {
             littleButton.data('url', buttonUrl);
             littleButton.click(dialog_share);
         });
-    };//create_buttons
+    }//create_buttons
 
 
     function dialog_share(event) {
-        var shareButton = null, shareUrl = null, newWindow = null;
+        var shareButton=null, shareUrl=null, newWindow=null;
 
         shareButton = jQuery(this);
         shareUrl = shareButton.data('url');
@@ -113,7 +114,7 @@ function GSShareBox(link, isPublic) {
             newWindow.focus()
         }
         return false;
-    };
+    }//dialog_share
 
     function setup() {
         var popoverOptions = {amimation: true, html: true, placement: 'bottom',
@@ -134,4 +135,4 @@ function GSShareBox(link, isPublic) {
         init: function () {
         }// init
     }; // Public
-};//GSShareBox
+}//GSShareBox
