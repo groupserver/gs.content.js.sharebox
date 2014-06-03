@@ -12,16 +12,22 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-from setuptools import setup, find_packages
+import codecs
 import os
-
+from setuptools import setup, find_packages
 from version import get_version
+
+version = get_version()
+
+with codecs.open('README.txt', encoding='utf-8') as f:
+    long_description = f.read()
+with codecs.open(os.path.join("docs", "HISTORY.txt"), encoding='utf-8') as f:
+    long_description += '\n' + f.read()
 
 setup(name='gs.content.js.sharebox',
       version=get_version(),
       description="The Share dialog box for GroupServer.",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      long_description=long_description,
       classifiers=[
         'Development Status :: 5 - Production/Stable',
         "Environment :: Web Environment",
@@ -35,8 +41,10 @@ setup(name='gs.content.js.sharebox',
         "Topic :: Software Development :: Libraries :: JavaScript Modules",
       ],
       keywords='share, facebook, twitter, email, groupserver, url',
-      author='Michael JasonSmith',
-      author_email='mpj17@onlinegroups.net',
+      author='Richard Waid',
+      author_email='richard@onlinegroups.net',
+      maintainer='Michael JasonSmith',
+      maintainer_email='mpj17@onlinegroups.net',
       url='http://source.iopen.net/groupserver/gs.content.js.sharebox/',
       license='ZPL 2.1',
       packages=find_packages(exclude=['ez_setup']),
