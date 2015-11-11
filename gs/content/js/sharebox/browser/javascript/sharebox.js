@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 // Sharing a link from GroupServer
 //
 // Copyright © 2013, 2014 OnlineGroups.net and Contributors.
@@ -18,21 +18,21 @@ var GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS = 'gs-content-js-sharebox-dialog';
 
 function GSShareBox(link, isPublic) {
     // Private variables
-    var button=null, url=null, title=null, public_widgets=null,
+    var button = null, url = null, title = null, public_widgets = null,
         FB_URL = 'http://www.facebook.com/sharer.php?u={HREF}&t={TITLE}',
-        FB_WIDGET = '<a class="fb-share dialog btn" data-icon="f" '+
+        FB_WIDGET = '<a class="fb-share dialog btn" data-icon="f" ' +
             'title="Share with Facebook" href="' + FB_URL + '"></a>',
         TWITTER_URL = 'http://www.twitter.com/home?status={TITLE}:+{HREF}',
-        TWITTER_WIDGET = '<a class="twitter-share dialog btn" data-icon="t" '+
+        TWITTER_WIDGET = '<a class="twitter-share dialog btn" data-icon="t" ' +
             'title="Share with Twitter"' + 'href="' + TWITTER_URL + '"></a>',
          //DIGG_URL = 'http://digg.com/submit?url={HREF}&title={TITLE}',
          //DIGG_WIDGET = '<a class="digg-share dialog btn" '+
          //    'title="Share with Digg" href="' + DIGG_URL + '">D</a>',
          GP_URL = 'https://plus.google.com/share?url={HREF}',
-         GP_WIDGET = '<a class="gp-share dialog btn" data-icon="g" '+
+         GP_WIDGET = '<a class="gp-share dialog btn" data-icon="g" ' +
              'title="Share with Google+" href="' + GP_URL + '"></a>',
-         URL_WIDGET = '<div class="full-share">'+
-             '<input class="full-share-input" type="text" value="{HREF}"'+
+         URL_WIDGET = '<div class="full-share">' +
+             '<input class="full-share-input" type="text" value="{HREF}"' +
              'readonly="0"/></div>';
     public_widgets = [FB_WIDGET, TWITTER_WIDGET, GP_WIDGET]; //, DIGG_WIDGET];
     // --=mpj17=-- Yes, the mailbox part of a mailto can be blank
@@ -45,9 +45,9 @@ function GSShareBox(link, isPublic) {
     // Private methods
 
     function dialog_html() {
-        var retval=null, privateWidgets=[URL_WIDGET], i=0,
-            privateWidgetString='', publicWidgetString='',
-            widgetString='';
+        var retval = null, privateWidgets = [URL_WIDGET], i = 0,
+            privateWidgetString = '', publicWidgetString = '',
+            widgetString = '';
 
         for (i in privateWidgets) {
             privateWidgetString = privateWidgetString + privateWidgets[i];
@@ -59,19 +59,19 @@ function GSShareBox(link, isPublic) {
             publicWidgetString = publicWidgetString + '<span>or use</span>';
             widgetString =
                 '<div class="gs-content-js-sharebox-dialog-widgets">' +
-                '<p class="muted">Share with</p>'+
-                '<div class="btn-toolbar '+
+                '<p class="muted">Share with</p>' +
+                '<div class="btn-toolbar ' +
                 'gs-content-js-sharebox-dialog-widgets-public">' +
                 publicWidgetString + '</div>' +
-                '<div class="gs-content-js-sharebox-dialog-widgets-private">'+
-                '<p class="muted">or use the <abbr title="Web link '+
+                '<div class="gs-content-js-sharebox-dialog-widgets-private">' +
+                '<p class="muted">or use the <abbr title="Web link ' +
                 '(uniform resource locator)">URL:</abbr></p>' +
                 privateWidgetString + '</div>';
         } else { // Private
             widgetString =
                 '<div class="gs-content-js-sharebox-dialog-widgets">' +
-                '<p class="muted">Share with the '+
-                '<abbr title="Web link (uniform resource '+
+                '<p class="muted">Share with the ' +
+                '<abbr title="Web link (uniform resource ' +
                 'locator)">URL:</abbr></p>' +
                 privateWidgetString + '</div>';
         }
@@ -87,10 +87,10 @@ function GSShareBox(link, isPublic) {
 
 
     function create_buttons(event) {
-        var littleButton=null, buttonUrl=null, dialog=null;
+        var littleButton = null, buttonUrl = null, dialog = null;
 
         dialog = button.next('.popover');
-        dialog.find('a.dialog').each(function(){
+        dialog.find('a.dialog').each(function() {
             littleButton = jQuery(this);
             buttonUrl = littleButton.attr('href');
             littleButton.removeAttr('href');
@@ -101,24 +101,24 @@ function GSShareBox(link, isPublic) {
 
 
     function dialog_share(event) {
-        var shareButton=null, shareUrl=null, newWindow=null;
+        var shareButton = null, shareUrl = null, newWindow = null;
 
         shareButton = jQuery(this);
         shareUrl = shareButton.data('url');
-        button.popover("hide");
+        button.popover('hide');
 
         // 37u x 23u
         newWindow = window.open(shareUrl, 'gs-content-js-sharebox-window',
                                 'height=414,width=666');
         if (window.focus) {
-            newWindow.focus()
+            newWindow.focus();
         }
         return false;
     }//dialog_share
 
     function setup() {
         var popoverOptions = {amimation: true, html: true, placement: 'bottom',
-                              trigger: 'click', content: dialog_html}
+                              trigger: 'click', content: dialog_html};
         button = jQuery(link);
         url = button.attr('href');
         button.removeAttr('href');
@@ -132,7 +132,7 @@ function GSShareBox(link, isPublic) {
     // Public
     return {
         publicWidgets: public_widgets,
-        init: function () {
+        init: function() {
         }// init
     }; // Public
 }//GSShareBox
