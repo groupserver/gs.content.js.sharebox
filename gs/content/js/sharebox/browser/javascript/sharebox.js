@@ -13,12 +13,14 @@
 //
 jQuery.noConflict();
 
-var GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS = 'gs-content-js-sharebox-dialog';
+var GS_CONTENT_JS_SHAREBOX_DIALOG = 'gs-content-js-sharebox-dialog',
+    GS_CONTENT_JS_SHAREBOX_COPY = GS_CONTENT_JS_SHAREBOX_DIALOG + '-copy';
 
 
 function GSShareBox(link, isPublic) {
     // Private variables
     var button = null, url = null, title = null, public_widgets = null,
+        copySupported = false,
         FB_URL = 'http://www.facebook.com/sharer.php?u={HREF}&t={TITLE}',
         FB_WIDGET = '<a class="fb-share dialog btn" data-icon="f" ' +
             'title="Share with Facebook" href="' + FB_URL + '"></a>',
@@ -30,10 +32,7 @@ function GSShareBox(link, isPublic) {
          //    'title="Share with Digg" href="' + DIGG_URL + '">D</a>',
          GP_URL = 'https://plus.google.com/share?url={HREF}',
          GP_WIDGET = '<a class="gp-share dialog btn" data-icon="g" ' +
-             'title="Share with Google+" href="' + GP_URL + '"></a>',
-         URL_WIDGET = '<div class="full-share">' +
-             '<input class="full-share-input" type="text" value="{HREF}"' +
-             'readonly="0"/></div>';
+             'title="Share with Google+" href="' + GP_URL + '"></a>';
     public_widgets = [FB_WIDGET, TWITTER_WIDGET, GP_WIDGET]; //, DIGG_WIDGET];
     // --=mpj17=-- Yes, the mailbox part of a mailto can be blank
     // http://www.ietf.org/rfc/rfc2368.txt
@@ -44,14 +43,38 @@ function GSShareBox(link, isPublic) {
 
     // Private methods
 
-    function dialog_html() {
-        var retval = null, privateWidgets = [URL_WIDGET], i = 0,
-            privateWidgetString = '', publicWidgetString = '',
-            widgetString = '';
-
-        for (i in privateWidgets) {
-            privateWidgetString = privateWidgetString + privateWidgets[i];
+    function copy_supported() {
+        var retval = false;
+        retval = document.queryCommandSupported('copy');
+        if (retval) {
+            // Check that the browser isn't Firefox pre-41
+            try {
+                document.execCommand('copy');
+            } catch (e) {
+                retval = false;
+            }
         }
+        return retval;
+    }//copy_supported
+
+    function get_url_widget(url) {
+        var widget_html = '<div class="full-share">' +
+            '<input class="full-share-input" type="text" value="' +
+            url + '" readonly="0"/>',
+            copyButton = null;
+
+        if (copySupported) {
+            copyButton = '<button class="' + GS_CONTENT_JS_SHAREBOX_COPY +
+                '">Copy</button>';
+            widget_html = widget_html + copyButton;
+        }
+        widget_html = widget_html + '</div>';
+        return widget_html;
+    }//get_url_widget
+
+    function dialog_html() {
+        var retval = null, i = 0, publicWidgetString = '', widgetString = '';
+
         if (isPublic) {
             for (i in public_widgets) {
                 publicWidgetString = publicWidgetString + public_widgets[i];
@@ -66,20 +89,19 @@ function GSShareBox(link, isPublic) {
                 '<div class="gs-content-js-sharebox-dialog-widgets-private">' +
                 '<p class="muted">or use the <abbr title="Web link ' +
                 '(uniform resource locator)">URL:</abbr></p>' +
-                privateWidgetString + '</div>';
+                get_url_widget(url) + '</div>';
         } else { // Private
             widgetString =
                 '<div class="gs-content-js-sharebox-dialog-widgets">' +
                 '<p class="muted">Share with the ' +
                 '<abbr title="Web link (uniform resource ' +
-                'locator)">URL:</abbr></p>' +
-                privateWidgetString + '</div>';
+                'locator)">URL:</abbr></p>' + get_url_widget(url) + '</div>';
         }
 
         widgetString = widgetString.replace(/{HREF}/g, url);
         widgetString = widgetString.replace(/{TITLE}/g, title);
 
-        retval = '<div class="' + GS_CONTENT_JS_SHAREBOX_DIALOG_CLASS + '">' +
+        retval = '<div class="' + GS_CONTENT_JS_SHAREBOX_DIALOG + '">' +
             widgetString + '</div>';
 
         return retval;
@@ -87,7 +109,7 @@ function GSShareBox(link, isPublic) {
 
 
     function create_buttons(event) {
-        var littleButton = null, buttonUrl = null, dialog = null;
+        var littleButton = null, buttonUrl = null, dialog = null, input = null;
 
         dialog = button.next('.popover');
         dialog.find('a.dialog').each(function() {
@@ -97,6 +119,17 @@ function GSShareBox(link, isPublic) {
             littleButton.data('url', buttonUrl);
             littleButton.click(dialog_share);
         });
+
+        if (copySupported) {
+            littleButton = dialog.find('.' + GS_CONTENT_JS_SHAREBOX_COPY)
+                .first();
+            input = dialog.find('.full-share-input').first();
+            littleButton.click(function(event) {
+                event.preventDefault(); // ?
+                input.select();
+                document.execCommand('copy');
+            });
+        }
     }//create_buttons
 
 
@@ -119,6 +152,8 @@ function GSShareBox(link, isPublic) {
     function setup() {
         var popoverOptions = {amimation: true, html: true, placement: 'bottom',
                               trigger: 'click', content: dialog_html};
+        copySupported = copy_supported();
+
         button = jQuery(link);
         url = button.attr('href');
         button.removeAttr('href');
