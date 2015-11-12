@@ -16,6 +16,15 @@
   <include package="zope.viewlet" file="meta.zcml" />
 
   <browser:resource
+    name="gs-content-js-sharebox-20151112.js"
+    file="browser/javascript/sharebox.js"
+    permission="zope2.Public" />
+  <browser:resource
+    name="gs-content-js-sharebox-min-20151112.js"
+    file="browser/javascript/sharebox-min.js"
+    permission="zope2.Public" />
+
+  <browser:resource
     name="gs-content-js-sharebox-20140327.js"
     file="browser/javascript/sharebox.js"
     permission="zope2.Public" />
