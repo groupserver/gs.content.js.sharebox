@@ -64,8 +64,12 @@ function GSShareBox(link, isPublic) {
             copyButton = null;
 
         if (copySupported) {
-            copyButton = '<button class="' + GS_CONTENT_JS_SHAREBOX_COPY +
-                '">Copy</button>';
+            copyButton =
+                '<button class="Copy the URL to your clipboard" ' +
+                'class="' + GS_CONTENT_JS_SHAREBOX_COPY + ' btn ' +
+                'icon-alone">' +
+                '<span aria-hidden="true" data-icon="&#x1f5cd;"></span>' +
+                '<span class="screen-reader-text">Copy</span></button>';
             widget_html = widget_html + copyButton;
         }
         widget_html = widget_html + '</div>';
