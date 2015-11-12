@@ -1,9 +1,5 @@
-==========================
-``gs.content.js.sharebox``
-==========================
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-An interface for sharing documents
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+:mod:`gs.content.js.sharebox`
+=============================
 
 :Author: `Michael JasonSmith`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
@@ -16,12 +12,26 @@ An interface for sharing documents
 ..  _Creative Commons Attribution-Share Alike 4.0 International License:
     http://creativecommons.org/licenses/by-sa/4.0/
 
-Introduction
-============
+Contents:
 
-This product provide the *Share* dialog for GroupServer_, as a
-JavaScript resource. The dialog allows a URL to be shared across
-many social media networks.
+.. toctree::
+   :maxdepth: 2
+
+   dialog
+   api
+   HISTORY
+
+
+This product provide the :doc:`dialog` for GroupServer_. The code
+exposes a :doc:`JavaScript API <api>` that allows a URL to be
+shared across many social media networks.
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
 Resources
 =========
@@ -38,5 +48,3 @@ Resources
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.Net: https://onlinegroups.net
 .. _Michael JasonSmith: http://groupserver.org/p/mpj17
-
-..  LocalWords:  minified
