@@ -65,7 +65,7 @@ function GSShareBox(link, isPublic) {
 
         if (copySupported) {
             copyButton =
-                '<button class="Copy the URL to your clipboard" ' +
+                '<button title="Copy the URL to your clipboard" ' +
                 'class="' + GS_CONTENT_JS_SHAREBOX_COPY + ' btn ' +
                 'icon-alone">' +
                 '<span aria-hidden="true" data-icon="&#x1f5cd;"></span>' +
