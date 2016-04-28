@@ -37,7 +37,7 @@ Resources
 =========
 
 - Documentation:
-  http://groupserver.readthedocs.org/projects/gscontentjssharebox/
+  http://groupserver.readthedocs.io/projects/gscontentjssharebox/
 - Code repository:
   https://github.com/groupserver/gs.content.js.sharebox
 - Questions and comments to
